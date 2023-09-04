@@ -1,0 +1,109 @@
+modbus: !include modbus.yaml
+
+sensor:
+  - platform: template
+    sensors:
+      ecodesign_kwl_typ:
+        unique_id: ecodesign_kwl_typ
+        value_template: >
+          {% set qep = states('sensor.ecodesign_kwl') %}
+          {% if qep == '0' %}
+            Aus
+          {% elif qep == '1' %}
+            Low
+          {% elif qep == '2' %}
+            Mid
+          {% elif qep == '3' %}
+            High
+          {% else %}
+            unbekannt
+          {% endif %}
+      ecodesign_status_typ:
+        unique_id: ecodesign_status_typ
+        value_template: >
+          {% set qep = states('sensor.ecodesign_status') %}
+          {% if qep == '0' %}
+            unknown
+          {% elif qep == '1' %}
+            Aus
+          {% elif qep == '2' %}
+            Standby
+          {% elif qep == '512' %}
+            Boost
+          {% elif qep == '4' %}
+            running
+          {% elif qep == '4096' %}
+            PV-Modus
+          {% elif qep == '8192' %}
+            PV-WP
+          {% elif qep == '-32768' %}
+            PV-WP+EL
+          {% else %}
+            unbekannt
+          {% endif %}
+      ecodesign_betriebsart_typ:
+        unique_id: ecodesign_betriebsart_typ
+        value_template: >
+          {% set eep = states('sensor.ecodesign_betriebsart') %}
+          {% if eep == '0' %}
+            Off
+          {% elif eep == '1' %}
+            WP
+          {% elif eep == '2' %}
+            EL
+          {% elif eep == '3' %}
+            WP+EL
+          {% elif eep == '4' %}
+            Kessel
+          {% elif eep == '5' %}
+            WP+Kessel
+          {% else %}
+            unbekannt
+          {% endif %}
+      ecodesign_legionel_auto_funktion_typ:
+        unique_id: ecodesign_legionel_auto_funktion_typ
+        value_template: >
+          {% set aep = states('sensor.ecodesign_legionel_auto_funktion') %}
+          {% if aep == '0' %}
+            Off
+          {% elif aep == '1' %}
+            60C
+          {% elif aep == '2' %}
+            65C
+          {% else %}
+            unbekannt
+          {% endif %}
+      ecodesign_pv_modus_typ:
+        unique_id: ecodesign_pv_modus_typ
+        value_template: >
+          {% set bep = states('sensor.ecodesign_pv_modus') %}
+          {% if bep == '0' %}
+            Off
+          {% elif bep == '1' %}
+            WP
+          {% elif bep == '2' %}
+            EL
+          {% elif bep == '3' %}
+            WP+EL
+          {% else %}
+            unbekannt
+          {% endif %}
+      ecodesign_feriendauer_typ:
+        unique_id: ecodesign_feriendauer_typ
+        value_template: >
+          {% set cep = states('sensor.ecodesign_feriendauer') %}
+          {% if cep == '0' %}
+            Off
+          {% elif cep == '1' %}
+            1 Week
+          {% elif cep == '2' %}
+            2 Week
+          {% elif cep == '3' %}
+            3 Week
+          {% elif cep == '4' %}
+            3 Days
+          {% elif cep == '5' %}
+            Manuell
+          {% else %}
+            unbekannt
+          {% endif %}

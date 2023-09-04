@@ -1,0 +1,101 @@
+- id: '1690311230553'
+  alias: WWWP_Set_Betriebsart
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_select.wwwp_betriebsart_set
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: wwwp
+      address: 12
+      slave: 3
+      value: "{% if is_state('input_select.wwwp_betriebsart_set', 'WP+EL') %}\n 3\n{%
+        elif is_state('input_select.wwwp_betriebsart_set', 'WP+Kessel') %}\n 5\n{%
+        elif is_state('input_select.wwwp_betriebsart_set', 'WP') %}\n 1\n{% elif is_state('input_select.wwwp_betriebsart_set',
+        'EL') %}\n 2\n{% elif is_state('input_select.wwwp_betriebsart_set', 'Kessel')
+        %}\n 4\n{% elif is_state('input_select.wwwp_betriebsart_set', 'Off') %}\n
+        0\n{% else %}\n none\n{%- endif -%}\n"
+  mode: single
+- id: '1690320814287'
+  alias: WWWP_Set_Legionellenfunktion
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_select.wwwp_legionellenfunktion
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: wwwp
+      address: 13
+      slave: 3
+      value: "{% if is_state('input_select.wwwp_legionellenfunktion', 'Aus') %}\n
+        0\n{% elif is_state('input_select.wwwp_legionellenfunktion', '60C') %}\n 1\n{%
+        elif is_state('input_select.wwwp_legionellenfunktion', '65C') %}\n 2\n{% else
+        %}\n none\n{%- endif -%}\n"
+  mode: single
+- id: '1690320874098'
+  alias: WWWP_Set_PV_Modus
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_select.wwwp_pv_modus
+  - platform: state
+    entity_id:
+    - automation.set_pv_state_depends_on_soc
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: wwwp
+      address: 17
+      slave: 3
+      value: "{% if is_state('input_select.wwwp_pv_modus', 'WP+EL') %}\n 3\n{% elif
+        is_state('input_select.wwwp_pv_modus', 'WP') %}\n 1\n{% elif is_state('input_select.wwwp_pv_modus',
+        'EL') %}\n 2\n{% elif is_state('input_select.wwwp_pv_modus', 'Aus') %}\n 0\n{%
+        else %}\n none\n{%- endif -%}\n"
+  mode: single
+- id: '1690320942867'
+  alias: WWWP_Set_Feriendauer
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_select.wwwp_feriendauer
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: wwwp
+      address: 20
+      slave: 3
+      value: "{% if is_state('input_select.wwwp_feriendauer', 'Aus') %}\n 0\n{% elif
+        is_state('input_select.wwwp_feriendauer', '1 Woche') %}\n 1\n{% elif is_state('input_select.wwwp_feriendauer',
+        '2 Wochen') %}\n 2\n{% elif is_state('input_select.wwwp_feriendauer', '3 Wochen')
+        %}\n 3\n{% elif is_state('input_select.wwwp_feriendauer', '3 Tage') %}\n 4\n{%
+        else %}\n none\n{%- endif -%}\n"
+  mode: single
+- id: '1690489006082'
+  alias: WWWP_Set_KWL
+  description: Kontrollierte Wohnraumlüftung
+  trigger:
+  - platform: state
+    entity_id:
+    - input_select.wwwp_kwl
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: wwwp
+      address: 16
+      slave: 3
+      value: "{% if is_state('input_select.wwwp_kwl', 'Aus') %}\n 0\n{% elif is_state('input_select.wwwp_kwl',
+        'Low') %}\n 1\n{% elif is_state('input_select.wwwp_kwl', 'Mid') %}\n 2\n{%
+        elif is_state('input_select.wwwp_kwl', 'High') %}\n 3\n{% else %}\n none\n{%-
+        endif -%}\n"
+  mode: single
