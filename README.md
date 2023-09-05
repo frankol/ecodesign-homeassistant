@@ -17,6 +17,8 @@ Konfiguration EcoDesign
   - Flow control: none
   - Parity: Even
   - Modbus: 3 #< in meinem Fall habe ich 3. Wenn das bei dir anders ist, muss die slave-Variable in allen yaml-Dateien angepasst werden.
+  - Der PV-Eingang der Warmwasserwärmepumpe muss geschlossen sein, wenn man den PV Modus über Modbus steuern möchte. Entweder werden die PV-Werte fest eingestellt und über die Kontakte an der EcoDesign Wärmepumpe der PV-Modus gestartet oder man installiert eine Drahtbrücke an der Platine und steuert den PV-Modus über HomeAssistant. ![ecodesign-Verkabelung-Modbus](https://github.com/frankol/ecodesign-homeassistant/assets/28876168/17f20137-a70d-439b-b913-373987b962d0)
+
 
  Konfiguration HomeAssistant
  - configuration.yaml mit der bestehenden Datei zusammenführen
