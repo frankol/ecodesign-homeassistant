@@ -34,3 +34,4 @@ Als Beispiel z.B. sensor.ecodesign_kwl gibt einen Statuscode der Kontrollierten 
 Hinweise:
 Ich habe noch nicht alle Status-Codes übertragen, daher fehlen noch ein paar.
 Die Dokumentation ist eigentlich nur für mich selbst gedacht. Wünsche und Anregungen gerne über die Issues einkippen.
+Die Strommessung erfolgt durch einen NOUS-Zwischenstecker, den es bei Amazon mit Tasmota Firmware zu kaufen gibt. Diesen habe ich mit ESPHome geflasht
