@@ -10,7 +10,7 @@ Voraussetzungen:
 
 Konfiguration EcoDesign
 - 5 Sekunden Wahlregler gedrückt halten
-- Werte ablesen für die Modbuskonfiguration (modbus.yaml)
+- Werte ablesen für die Modbuskonfiguration (waveshare-config.png)
   - Baudrate: 19200
   - Databits: 8
   - Stopbits: 1
