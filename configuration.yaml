@@ -22,21 +22,35 @@ sensor:
         unique_id: ecodesign_status_typ
         value_template: >
           {% set qep = states('sensor.ecodesign_status') %}
-          {% if qep == '0' %}
-            unknown
-          {% elif qep == '1' %}
+          {% if qep == '1' %}
             Aus
           {% elif qep == '2' %}
             Standby
-          {% elif qep == '512' %}
-            Boost
           {% elif qep == '4' %}
             running
+          {% elif qep == '8' %}
+            Legio
+          {% elif qep == '32' %}
+            END-Legio
+          {% elif qep == '64' %}
+            Abtau
+          {% elif qep == '128' %}
+            Abtau-END
+          {% elif qep == '256' %}
+            Störung
+          {% elif qep == '512' %}
+            Boost
+          {% elif qep == '1024' %}
+            LOCK-WP
+          {% elif qep == '2048' %}
+            Ferien
           {% elif qep == '4096' %}
-            PV-Modus
+            SG-ENABLED
           {% elif qep == '8192' %}
             PV-WP
-          {% elif qep == '-32768' %}
+          {% elif qep == '16384' %}
+            PV-EL
+          {% elif qep == '32768' %}
             PV-WP+EL
           {% else %}
             unbekannt
