@@ -31,7 +31,7 @@ Beschreibung
 Die Inputs in HomeAssistant können in ein Dashboard übernommen werden. Die Automatisierungen "lauschen" auf die Änderungen bei den Inputs und schreiben die Änderungen über Modbus in die Warmwasserwärmepumpe. Außerdem werden die Inputs mit der automation.yaml in Zahlcodes übersetzt. 
 Manche Sensoren müssen vom Zahlencode in eine lesbare Form gebracht werden. Das übernehmen die Template Sensoren in der configuration.yaml.
 
-Als Beispiel z.B. sensor.ecodesign_kwl gibt einen Statuscode der Kontrollierten WohnraumLüftung von 0 (Aus) bis 3 (High) aus. Über das Template wird der Code in eine lesbare Form übersetzt und es wird ein neuer Sensor erstellt und heisst sensor.ecodesign_kwl_typ, welcher die leserlichen Angaben dazu enthält. Es gibt also zwei Sensoren. Der eine mit den Zahlencodes und der andere mit den lesbaren Inhalten
+Als Beispiel sensor.ecodesign_kwl gibt einen Statuscode der Kontrollierten WohnraumLüftung von 0 (Aus) bis 3 (High) aus. Über das Template wird der Code in eine lesbare Form übersetzt und es wird ein neuer Sensor erstellt und heisst sensor.ecodesign_kwl_typ, welcher die leserlichen Angaben dazu enthält. Es gibt also zwei Sensoren. Der eine mit den Zahlencodes und der andere mit den lesbaren Inhalten
 
 Hinweise:
 
