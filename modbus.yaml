@@ -6,304 +6,400 @@
   port: 502
   
   climates:
-  - name: "EcoDesign Temperatur Soll Set"
-    unique_id: ecodesign_climates_temp_soll
-    scan_interval: 10
-    slave: 3
-    address: 4
-    input_type: holding
-    max_temp: 62
-    min_temp: 5
-    precision: 1
-    temp_step: 1
-    target_temp_register: 4
-  - name: "EcoDesign Temperatur Min Set"
-    unique_id: ecodesign_climates_temp_min
-    scan_interval: 10
-    slave: 3
-    address: 5
-    input_type: holding
-    max_temp: 62
-    min_temp: 5
-    precision: 1
-    temp_step: 1
-    target_temp_register: 5
-  - name: "EcoDesign Temperatur2 Min Set"
-    unique_id: ecodesign_climates_temp2_min
-    scan_interval: 10
-    slave: 3
-    address: 6
-    input_type: holding
-    max_temp: 62
-    min_temp: 5
-    precision: 1
-    temp_step: 1
-    target_temp_register: 6
-  - name: "EcoDesign PV Temperatur WP" 
-    address: 18
-    input_type: holding
-    min_temp: 5
-    max_temp: 62
-    scan_interval: 10
-    slave: 3
-    precision: 1
-    temp_step: 1
-    target_temp_register: 18
-    unique_id: ecodesign_climates_pv_temp_wp
-  - name: "EcoDesign PV Temperatur EL" 
-    address: 19
-    input_type: holding
-    min_temp: 5
-    max_temp: 62
-    scan_interval: 10
-    slave: 3
-    precision: 1
-    temp_step: 1
-    target_temp_register: 19
-    unique_id: ecodesign_climates_pv_temp_el
-  - name: "EcoDesign Temperatur Max" 
-    address: 28
-    input_type: holding
-    min_temp: 5
-    max_temp: 62
-    scan_interval: 10
-    slave: 3
-    temp_step: 1
-    target_temp_register: 28
-    unique_id: ecodesign_climates_max_temp
-  sensors:
-  - name: "EcoDesign Temperatur Ist"
-    unique_id: ecodesign_temp_ist
-    address: 8
-    data_type: int16
-    input_type: input
-    unit_of_measurement: °C
-    scale: 0.1
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Temperatur Verdampfer"
-    address: 7
-    data_type: int16
-    input_type: input
-    unit_of_measurement: °C
-    scale: 0.1
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Temperatur Min"
-    address: 5
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: °C
-    min_value: 5
-    max_value: 65
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Temperatur2 Min"
-    address: 6
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: °C
-    min_value: 5
-    max_value: 65
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Start WP Hour"
-    address: 8
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: hours
-    min_value: 0
-    max_value: 23
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Start WP Min"
-    address: 9
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: minutes
-    min_value: 0
-    max_value: 59
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Stop WP Hour"
-    address: 10
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: hours
-    min_value: 0
-    max_value: 23
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Stop WP Min"
-    address: 11
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: minutes
-    min_value: 0
-    max_value: 59
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Betriebsart" #0=Off,1=WP,2=EL,3=WP+EL,4=Kessel,5=WP+Kessel
-    address: 12
-    data_type: int16
-    input_type: holding
-    min_value: 0
-    max_value: 5
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Legionel Auto Funktion" #0=Off,1=60C,2=65C
-    address: 13
-    data_type: int16
-    input_type: holding
-    min_value: 0
-    max_value: 2
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign PV Modus" #0=off,1=WP,2=EL,3=WP+EL
-    address: 17
-    data_type: int16
-    input_type: holding
-    min_value: 0
-    max_value: 3
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Feriendauer" #0 = Off,1 = 1 Week,2 = 2 Weeks3 = 3 Weeks,4 = 3 Days,5 = Manual
-    address: 20
-    data_type: int16
-    input_type: holding
-    min_value: 0
-    max_value: 5
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Zeit-Sek" 
-    address: 103
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: seconds
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Zeit-Min" 
-    address: 104
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: minutes
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Zeit-Stunden" 
-    address: 105
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: hours
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Zeit-Tag" 
-    address: 106
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: days
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Zeit-Datum" 
-    address: 107
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: time
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Zeit-Monat" 
-    address: 108
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: months
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign Zeit-Jahr" 
-    address: 109
-    data_type: int16
-    input_type: holding
-    unit_of_measurement: year
-    slave: 3
-  - name: "EcoDesign Status"
-    address: 16
-    data_type: int16
-    input_type: input
-    slave: 3
-  - name: "EcoDesign Alarm"
-    address: 18
-    data_type: int16
-    input_type: input
-    slave: 3
-  - name: "EcoDesign KWL" #0 = Off,1 = Low,2 = Mid;3 = High
-    address: 16
-    data_type: int16
-    input_type: holding
-    min_value: 0
-    max_value: 3
-    scan_interval: 10
-    slave: 3
-  switches:
-  - name: "EcoDesign Boost"
-    unique_id: ecodesign_boost
-    address: 22
-    slave: 3
-    command_on: 1
-    command_off: 0
-    verify:
+    - name: "EcoDesign Solltemperatur Set"
+      unique_id: ecodesign_climates_temp_soll
+      scan_interval: 10
+      slave: 3
+      address: 4
       input_type: holding
+      max_temp: 62
+      min_temp: 5
+      precision: 1
+      temp_step: 1
+      target_temp_register: 4
+    - name: "EcoDesign Temperatur 2te Heizquelle Tmin Set"
+      unique_id: ecodesign_climates_temp_min
+      scan_interval: 10
+      slave: 3
+      address: 5
+      input_type: holding
+      max_temp: 62
+      min_temp: 5
+      precision: 1
+      temp_step: 1
+      target_temp_register: 5
+    - name: "EcoDesign Frostschutz T2min Set"
+      unique_id: ecodesign_climates_temp2_min
+      scan_interval: 10
+      slave: 3
+      address: 6
+      input_type: holding
+      max_temp: 62
+      min_temp: 5
+      precision: 1
+      temp_step: 1
+      target_temp_register: 6
+    - name: "EcoDesign Temperatur PV WP"
+      address: 18
+      input_type: holding
+      min_temp: 5
+      max_temp: 62
+      scan_interval: 10
+      slave: 3
+      precision: 1
+      temp_step: 1
+      target_temp_register: 18
+      unique_id: ecodesign_climates_pv_temp_wp
+    - name: "EcoDesign Temperatur PV EL"
+      address: 19
+      input_type: holding
+      min_temp: 5
+      max_temp: 62
+      scan_interval: 10
+      slave: 3
+      precision: 1
+      temp_step: 1
+      target_temp_register: 19
+      unique_id: ecodesign_climates_pv_temp_el
+    - name: "EcoDesign Temperatur Max"
+      address: 28
+      input_type: holding
+      min_temp: 5
+      max_temp: 62
+      scan_interval: 10
+      slave: 3
+      temp_step: 1
+      target_temp_register: 28
+      unique_id: ecodesign_climates_max_temp
+    - name: "ED Temperatur TminRL Set"
+      unique_id: ecodesign_climates_temp_rlmin
+      scan_interval: 10
+      slave: 3
+      address: 14
+      input_type: holding
+      max_temp: 20
+      min_temp: 5
+      precision: 1
+      temp_step: 1
+      target_temp_register: 14
+  sensors:
+    - name: "EcoDesign WW-Temperatur Ist"
+      unique_id: ecodesign_temp_ist
+      address: 8
+      data_type: int16
+      input_type: input
+      unit_of_measurement: °C
+      scale: 0.1
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Speed EC fan"
+      unique_id: ec_speed_actual
+      address: 15
+      data_type: int16
+      input_type: input
+      unit_of_measurement: "%"
+      scan_interval:  10
+      scale: 0.1
+      slave: 3
+    - name: "Software Version"
+      address: 119
+      data_type: int16
+      input_type: input
+      unit_of_measurement: "VT" 
+      slave: 3
+    - name: "EcoDesign Temperatur Verdampfer"
+      address: 7
+      data_type: int16
+      input_type: input
+      unit_of_measurement: °C
+      scale: 0.1
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Temperatur 2te Heizquelle Tmin"
+      address: 5
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: °C
+      min_value: 5
+      max_value: 65
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Frostschutz T2min"
+      address: 6
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: °C
+      min_value: 5
+      max_value: 65
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Speed LS1"
+      address: 30
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: "%"
+      min_value: 0
+      max_value: 100
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Speed LS2"
+      address: 31
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: "%"
+      min_value: 0
+      max_value: 100
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Speed LS3"
+      address: 32
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: "%"
+      min_value: 0
+      max_value: 100
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Start WP Std."
+      address: 8
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: hours
+      min_value: 0
+      max_value: 23
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Start WP Min"
+      address: 9
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: minutes
+      min_value: 0
+      max_value: 59
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Stop WP Std."
+      address: 10
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: hours
+      min_value: 0
+      max_value: 23
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Stop WP Min"
+      address: 11
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: minutes
+      min_value: 0
+      max_value: 59
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Betriebsart" #0=Off,1=WP,2=EL,3=WP+EL,4=Kessel,5=WP+Kessel
+      address: 12
+      data_type: int16
+      input_type: holding
+      min_value: 0
+      max_value: 5
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Vent Pause" #0=Off,1=30m/15s,2=30m/30s,3=60m/15s,4=60m/30s,5=9m/15s, 9=60m/30s
+      address: 23
+      data_type: int16
+      input_type: holding
+      min_value: 0
+      max_value: 6
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Legionel Auto Funktion" #0=Off,1=60C,2=65C
+      address: 13
+      data_type: int16
+      input_type: holding
+      min_value: 0
+      max_value: 2
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign PV Modus" #0=off,1=WP,2=EL,3=WP+EL
+      address: 17
+      data_type: int16
+      input_type: holding
+      min_value: 0
+      max_value: 3
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Feriendauer" #0 = Off,1 = 1 Week,2 = 2 Weeks3 = 3 Weeks,4 = 3 Days,5 = Manual
+      address: 20
+      data_type: int16
+      input_type: holding
+      min_value: 0
+      max_value: 5
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Uhrzeit-Sek"
+      address: 103
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: seconds
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Uhrzeit-Min"
+      address: 104
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: minutes
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Uhrzeit-Stunden"
+      address: 105
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: hours
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Uhrzeit-Tag"
+      address: 106
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: days
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Zeit-Datum"
+      address: 107
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: time
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Uhrzeit-Monat"
+      address: 108
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: months
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Uhrzeit-Jahr"
+      address: 109
+      data_type: int16
+      input_type: holding
+      unit_of_measurement: year
+      slave: 3
+    - name: "EcoDesign Status"
+      address: 16
+      data_type: int16
+      input_type: input
+      slave: 3
+    - name: "EcoDesign Alarm"
+      address: 18
+      data_type: uint16
+      input_type: input
+      slave: 3
+    - name: "EcoDesign Abtauart"
+      address: 26
+      data_type: int16
+      input_type: holding
+      min_value: 0
+      max_value: 2
+      unique_id: EcoDesign_Abtauart
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign KWL Modus"
+      address: 16
+      data_type: uint16
+      input_type: holding
+      min_value: 0
+      max_value: 3
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign FanType" #0 = AC,1 = EC
+      address: 29
+      data_type: int16
+      input_type: holding
+      min_value: 0
+      max_value: 1
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign WP_LS" #0 = Off/AC low ,1 = EC 1/AC high ,2 = EC2 ;3 = EC3
+      address: 15
+      data_type: int16
+      input_type: holding
+      min_value: 0
+      max_value: 3
+      scan_interval: 10
+      slave: 3
+  switches:
+    - name: "EcoDesign Boost"
+      unique_id: ecodesign_boost
       address: 22
-      state_on: 1
-      state_off: 0
+      slave: 3
+      command_on: 1
+      command_off: 0
+      verify:
+        input_type: holding
+        state_on: 1
+        state_off: 0
+    - name: "EcoDesign Timer"
+      unique_id: ecodesign_timer
+      address: 7
+      slave: 3
+      command_on: 1
+      command_off: 0
+      verify:
+        input_type: holding
+        state_on: 1
+        state_off: 0
   binary_sensors:
-  - name: "EcoDesign Timer" #0=off,1=on
-    address: 7
-    input_type: holding
-    scan_interval: 10
-    slave: 3
-  - name: "EcoDesign DI1 Pressostat"
-    address: 0
-    scan_interval: 10
-    input_type: input
-    unique_id: ecodesign_di1_pressostat
-    slave: 3
-  - name: "EcoDesign DI2 PV"
-    address: 1
-    scan_interval: 10
-    input_type: input
-    unique_id: ecodesign_di2_pv
-    slave: 3
-  - name: "EcoDesign Relay1_Kompressor"
-    address: 9
-    scan_interval: 10
-    input_type: input
-    unique_id: ecodesign_relay1_kompressor
-    slave: 3
-  - name: "EcoDesign Relay2_Heizstab"
-    address: 10
-    scan_interval: 10
-    input_type: input
-    unique_id: ecodesign_relay2_heizstab
-    slave: 3
-  - name: "EcoDesign Relay3_Kessel"
-    address: 11
-    scan_interval: 10
-    input_type: input
-    unique_id: ecodesign_relay3_kessel
-    slave: 3
-  - name: "EcoDesign Relay4_Magnetventil"
-    address: 12
-    scan_interval: 10
-    input_type: input
-    unique_id: ecodesign_relay4_magnetventil
-    slave: 3
-  - name: "EcoDesign Relay6_Kondensator"
-    address: 13
-    scan_interval: 10
-    input_type: input
-    unique_id: ecodesign_relay6_kondensator
-    slave: 3
-  - name: "EcoDesign Relay7_Ventilator"
-    address: 14
-    scan_interval: 10
-    input_type: input
-    unique_id: ecodesign_relay7_ventilator
-    slave: 3
+    - name: "EcoDesign Timer" #0=off,1=on
+      unique_id:  ecodesign_timer
+      address: 7
+      input_type: holding
+      scan_interval: 10
+      slave: 3
+    - name: "EcoDesign Pressostat" #0=off,1=on
+      address: 0
+      scan_interval: 10
+      input_type: input
+      unique_id: ecodesign_di1_pressostat
+      slave: 3
+    - name: "Smart Grid contact"
+      address: 1
+      scan_interval: 10
+      input_type: input
+      unique_id: ecodesign_di2_pv
+      slave: 3
+    - name: "EcoDesign Relay1_Kompressor"
+      address: 9
+      scan_interval: 10
+      input_type: input
+      unique_id: ecodesign_relay1_kompressor
+      slave: 3
+    - name: "EcoDesign Relay2_Heizstab"
+      address: 10
+      scan_interval: 10
+      input_type: input
+      unique_id: ecodesign_relay2_heizstab
+      slave: 3
+    - name: "EcoDesign Relay6_Kessel"
+      address: 11
+      scan_interval: 10
+      input_type: input
+      unique_id: ecodesign_relay6_kessel
+      slave: 3
+    - name: "EcoDesign Relay3_Magnetventil"
+      address: 12
+      scan_interval: 10
+      input_type: input
+      unique_id: ecodesign_relay3_magnetventil
+      slave: 3
+    - name: "EcoDesign Relay5_EC/AC-high/Pumpe RF"
+      address: 14
+      scan_interval: 10
+      input_type: input
+      unique_id: ecodesign_relay5_EC(on)AC(high)
+      slave: 3
+    - name: "EcoDesign Relay4_AC(low)"
+      address: 13
+      scan_interval: 10
+      input_type: input
+      unique_id: ecodesign_relay4_ac(low)
+      slave: 3
