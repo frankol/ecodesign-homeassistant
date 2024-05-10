@@ -99,3 +99,39 @@
         elif is_state('input_select.wwwp_kwl', 'High') %}\n 3\n{% else %}\n none\n{%-
         endif -%}\n"
   mode: single
+- id: '1690589006083'
+  alias: WWWP_Set_WP_LS
+  description: Lufterstufe Einstellung
+  trigger:
+  - platform: state
+    entity_id:
+    - input_select.wwwp_wp_ls
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: wwwp
+      address: 15
+      slave: 3
+      value: "{% if is_state('input_select.wwwp_wp_ls', 'Niedrig') %}\n 0\n{% elif is_state('input_select.wwwp_wp_ls',
+        'Mittel') %}\n 1\n{% elif is_state('input_select.wwwp_wp_ls', 'Hoch') %}\n 2\n{% else %}\n none\n{%-
+        endif -%}\n"
+  mode: single 
+- id: '1690689006084'
+  alias: WWWP_Set_Abtauart
+  description: Abtauart
+  trigger:
+  - platform: state
+    entity_id:
+    - input_select.wwwp_abtauart
+  condition: []
+  action:
+  - service: modbus.write_register
+    data:
+      hub: wwwp
+      address: 26
+      slave: 3
+      value: "{% if is_state('input_select.wwwp_Abtauart', 'Gas') %}\n 0\n{% elif is_state('input_select.wwwp_Abtauart',
+        'Luft') %}\n 1\n{% elif is_state('input_select.wwwp_Abtauart', 'TminRL') %}\n 2\n{% else %}\n none\n{%-
+        endif -%}\n"
+  mode: single
