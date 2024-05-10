@@ -121,3 +121,66 @@ sensor:
           {% else %}
             unbekannt
           {% endif %}
+      ecodesign_fantype_typ:
+        unique_id: ecodesign_fantype_typ
+        value_template: >
+          {% set qep = states('sensor.ecodesign_fantype') %}
+          {% if qep == '0' %}
+            AC
+          {% elif qep == '1' %}
+            EC
+          {% else %}
+            unbekannt
+          {% endif %}
+      ecodesign_wp_ls_typ:
+        unique_id: ecodesign_wp_ls_typ
+        value_template: >
+          {% set qep = states('sensor.ecodesign_wp_ls') %}
+          {% if qep == '0' %}
+            Niedrig
+          {% elif qep == '1' %}
+            Mittel
+          {% elif qep == '2' %}
+            Hoch
+          {% else %}
+            unbekannt
+          {% endif %}
+      ecodesign_alarm_typ:
+        unique_id: ecodesign_alarm_typ
+        value_template: >
+          {% set qep = states('sensor.ecodesign_alarm') %}
+          {% if qep == '0' %}
+            Keine Störung
+          {% elif qep == '1' %}
+            Speicherfühler, Kurzschluss
+          {% elif qep == '2' %}
+            Speicherfühler, Unterbrechung
+          {% elif qep == '4' %}
+            Verdampferfühler, Kurzschluss
+          {% elif qep == '8' %}
+            Verdampferfühler, Unterbrechung
+          {% elif qep == '16' %}
+            1ste Pressostat Meldung
+          {% elif qep == '32' %}
+            Pressostat Störung 
+          {% elif qep == '64' %}
+            Anode kontrollieren
+          {% elif qep == '128' %}
+            Legio Temperatur nicht erreicht
+          {% elif qep == '256' %}
+            Uhrzeit einstellen!
+          {% elif qep == '512' %}
+            Quelltemperatur, Meldung
+          {% elif qep == '1024' %}
+            Quelltemperatur, Störung
+          {% elif qep == '2048' %}
+            Unbekannt
+          {% elif qep == '4096' %}
+            Quelltemperatur < TminRL
+          {% elif qep == '8192' %}
+            Unbekannt
+          {% elif qep == '16384' %}
+            Unbekannt
+          {% else %}
+            unbekannt
+          {% endif %}      
