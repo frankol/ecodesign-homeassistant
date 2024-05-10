@@ -34,6 +34,7 @@ Manche Sensoren müssen vom Zahlencode in eine lesbare Form gebracht werden. Das
 Als Beispiel z.B. sensor.ecodesign_kwl gibt einen Statuscode der Kontrollierten WohnraumLüftung von 0 (Aus) bis 3 (High) aus. Über das Template wird der Code in eine lesbare Form übersetzt und es wird ein neuer Sensor erstellt und heisst sensor.ecodesign_kwl_typ, welcher die leserlichen Angaben dazu enthält. Es gibt also zwei Sensoren. Der eine mit den Zahlencodes und der andere mit den lesbaren Inhalten
 
 Hinweise:
-Ich habe noch nicht alle Status-Codes übertragen, daher fehlen noch ein paar.
+
 Die Dokumentation ist eigentlich nur für mich selbst gedacht. Wünsche und Anregungen gerne über die Issues einkippen.
 Die Strommessung erfolgt durch einen NOUS-Zwischenstecker, den es bei Amazon mit Tasmota Firmware zu kaufen gibt. Diesen habe ich mit ESPHome geflasht
+  Die ESPHome Firmware muss dafür nach dem manuellen Download aus ESPHome mit der Dateiendung .gz komprimiert werden. 7-Zip erledigt das z.B.
