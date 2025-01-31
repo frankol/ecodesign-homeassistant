@@ -23,8 +23,10 @@ Konfiguration EcoDesign
  Konfiguration HomeAssistant
  - configuration.yaml mit der bestehenden Datei zusammenführen
  - modbus.yaml in das /config Verzeichnis kopieren und die IP des Modbus Konverters angeben
- - automations.yaml mit der bestehenden Datei zusammenführen
+ - automations.yaml mit der bestehenden Datei zusammenführen 
  - alle inputs über Einstellungen -> Geräte und Dienste -> Helfer anlegen (Die Vorlagen befinden sich im input Ordner hier)
+ - ALTERNATIV zu Inputs und automations.yaml können auch Templates in der configuration.yaml verwendet werden, wie von Simon beschrieben: ![Issue2](https://github.com/frankol/ecodesign-homeassistant/issues/2). Dann entfallen die Erstellung der Inputs und automations.yaml.
+   Bitte bei den Templates ebenfalls auf die SLAVE-Variable achten, da die Werte direkt über Modbus geschrieben werden.
 
 Beschreibung
 
