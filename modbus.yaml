@@ -10,8 +10,9 @@
       unique_id: ecodesign_climates_temp_soll
       scan_interval: 10
       slave: 3
-      address: 4
-      input_type: holding
+      address: 8
+      input_type: input
+      scale: 0.1
       max_temp: 62
       min_temp: 5
       precision: 1
