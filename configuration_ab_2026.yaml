@@ -1,0 +1,86 @@
+modbus: !include modbus.yaml
+
+template:
+- sensor:
+  - unit_of_measurement: W
+    default_entity_id: sensor.aquarea_power_consumption
+    name: Aquarea Power Consumption
+    state: "{% if states('sensor.dhw_power_consumption') != \"0\" %}\n  {{ states('sensor.dhw_power_consumption')
+      }}\n{% elif states('sensor.cool_power_consumption') != \"0\" %}\n  {{ states('sensor.cool_power_consumption')
+      }}\n{% else %}\n  {{ states('sensor.panasonic_heat_pump_main_heat_power_consumption')
+      }}\n{% endif %}"
+
+  - unit_of_measurement: W
+    default_entity_id: sensor.aquarea_power_production
+    name: Aquarea Power Production
+    state: "{% if states('sensor.dhw_power_production') != \"0\" %}\n  {{ states('sensor.dhw_power_production')
+      }}\n{% elif states('sensor.cool_power_production') != \"0\" %}\n  {{ states('sensor.cool_power_production')
+      }}\n{% else %}\n  {{ states('sensor.panasonic_heat_pump_main_heat_power_production')
+      }}\n{% endif %}"
+
+  - unique_id: aquara_cop
+    unit_of_measurement: x
+    default_entity_id: sensor.aquarea_cop
+    name: Aquarea COP
+    state: "{% if states('sensor.panasonic_heat_pump_main_heat_power_production')
+      != \"Unknown\" %}\n  {% if states('sensor.panasonic_heat_pump_main_heat_power_consumption')
+      > \"0\" %}\n    {{ '%0.1f' % ((states('sensor.panasonic_heat_pump_main_heat_power_production')
+      | float ) / (states('sensor.panasonicwp_sm_total_power') | float)) }}\n  {%
+      else %}\n    0.0\n  {% endif %}\n{% else %}\n  unavailable\n{% endif %}"
+
+  - unique_id: arbeit_eg_fenster_lox
+    default_entity_id: sensor.arbeit_eg_fenster_lox
+    state: "{% set cep = states('binary_sensor.fenster_arbeit_eg') %} {% if cep ==
+      'EIN' %}\n  Geschlossen\n{% elif cep == 'AUS' %}\n  Geöffnet\n{% elif cep ==
+      'on' %}\n  Geschlossen\n{% elif cep == 'off' %}\n  Geöffnet\n{% else %}\n  unbekannt\n{%
+      endif %}"
+    name: arbeit_eg_fenster_lox
+
+  - unique_id: ecodesign_feriendauer_typ
+    default_entity_id: sensor.ecodesign_feriendauer_typ
+    state: "{% set cep = states('sensor.ecodesign_feriendauer') %} {% if cep == '0'
+      %}\n  Off\n{% elif cep == '1' %}\n  1 Week\n{% elif cep == '2' %}\n  2 Week\n{%
+      elif cep == '3' %}\n  3 Week\n{% elif cep == '4' %}\n  3 Days\n{% elif cep ==
+      '5' %}\n  Manuell\n{% else %}\n  unbekannt\n{% endif %}"
+    name: ecodesign_feriendauer_typ
+
+  - unique_id: ecodesign_pv_modus_typ
+    default_entity_id: sensor.ecodesign_pv_modus_typ
+    state: "{% set bep = states('sensor.ecodesign_pv_modus') %} {% if bep == '0' %}\n
+      \ Off\n{% elif bep == '1' %}\n  WP\n{% elif bep == '2' %}\n  EL\n{% elif bep
+      == '3' %}\n  WP+EL\n{% else %}\n  unbekannt\n{% endif %}"
+    name: ecodesign_pv_modus_typ
+
+  - unique_id: ecodesign_legionel_auto_funktion_typ
+    default_entity_id: sensor.ecodesign_legionel_auto_funktion_typ
+    state: "{% set aep = states('sensor.ecodesign_legionel_auto_funktion') %} {% if
+      aep == '0' %}\n  Off\n{% elif aep == '1' %}\n  60C\n{% elif aep == '2' %}\n
+      \ 65C\n{% else %}\n  unbekannt\n{% endif %}"
+    name: ecodesign_legionel_auto_funktion_typ
+
+  - unique_id: ecodesign_betriebsart_typ
+    default_entity_id: sensor.ecodesign_betriebsart_typ
+    state: "{% set eep = states('sensor.ecodesign_betriebsart') %} {% if eep == '0'
+      %}\n  Off\n{% elif eep == '1' %}\n  WP\n{% elif eep == '2' %}\n  EL\n{% elif
+      eep == '3' %}\n  WP+EL\n{% elif eep == '4' %}\n  Kessel\n{% elif eep == '5'
+      %}\n  WP+Kessel\n{% else %}\n  unbekannt\n{% endif %}"
+    name: ecodesign_betriebsart_typ
+
+  - unique_id: ecodesign_kwl_typ
+    default_entity_id: sensor.ecodesign_kwl_typ
+    state: "{% set qep = states('sensor.ecodesign_kwl') %} {% if qep == '0' %}\n  Aus\n{%
+      elif qep == '1' %}\n  Low\n{% elif qep == '2' %}\n  Mid\n{% elif qep == '3'
+      %}\n  High\n{% else %}\n  unbekannt\n{% endif %}"
+    name: ecodesign_kwl_typ
+
+  - unique_id: ecodesign_status_typ
+    default_entity_id: sensor.ecodesign_status_typ
+    state: "{% set qep = states('sensor.ecodesign_status') %} {% if qep == '1' %}\n
+      \ Aus\n{% elif qep == '2' %}\n  Standby\n{% elif qep == '4' %}\n  running\n{%
+      elif qep == '8' %}\n  Legio\n{% elif qep == '32' %}\n  END-Legio\n{% elif qep
+      == '64' %}\n  Abtau\n{% elif qep == '128' %}\n  Abtau-END\n{% elif qep == '256'
+      %}\n  Störung\n{% elif qep == '512' %}\n  Boost\n{% elif qep == '1024' %}\n
+      \ LOCK-WP\n{% elif qep == '2048' %}\n  Ferien\n{% elif qep == '4096' %}\n  SG-ENABLED\n{%
+      elif qep == '8192' %}\n  PV-WP\n{% elif qep == '16384' %}\n  PV-EL\n{% elif
+      qep == '32768' %}\n  PV-WP+EL\n{% else %}\n  unbekannt\n{% endif %}"
+    name: ecodesign_status_typ
